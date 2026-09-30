@@ -9,6 +9,7 @@ ash-window = "0.13.0"
 winit = {version = "0.30.13", features = ["rwh_06"]}
 tobj = "4.0.5"
 glam = "0.33.11"
+spdlog-rs = "0.5"
 
 [profile.dev]
 debug = "line-tables-only"
