@@ -5,6 +5,7 @@ edition = "2024"
 
 [dependencies]
 ash = "0.38.0"
+ash-window = "0.13.0"
 winit = {version = "0.30.13", features = ["rwh_06"]}
 tobj = "4.0.5"
 glam = "0.33.11"
