@@ -8,10 +8,6 @@ rustflags = "-Zthreads=8"
 # mold, if you have GCC 12+
 rustflags = ["-C", "link-arg=-fuse-ld=mold"]
 
-# mold, otherwise
-linker = "clang"
-rustflags = ["-C", "link-arg=-fuse-ld=mold"]
-
 [resolver]
 feature-unification = "workspace"
 
