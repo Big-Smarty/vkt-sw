@@ -5,4 +5,16 @@ edition = "2024"
 
 [dependencies]
 ash = "0.38.0"
-winit = {version = "0.30.13", features = ["rwh_06"]
+winit = {version = "0.30.13", features = ["rwh_06"]}
+
+[profile.dev]
+debug = "line-tables-only"
+codegen-backend = "cranelift"
+
+[profile.dev.package."*"]
+debug = false
+
+[profile.debugging]
+inherits = "dev"
+debug = true
+
