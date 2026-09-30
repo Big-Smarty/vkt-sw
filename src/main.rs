@@ -107,7 +107,7 @@ impl App {
         .to_str();
 
         match device_name {
-            Ok(dn) => info!("device name: {dn}"),
+            Ok(dn) => info!("[init] device name: {dn}"),
             Err(e) => return Err(error_to_string(e)),
         }
         let queue_family_properties_len = 0;
@@ -167,12 +167,12 @@ impl App {
             )
             .map_err(error_to_string)
         }?);
-        trace!("Created surface");
+        trace!("[init] created surface");
         self.surface_instance = Some(surface::Instance::new(
             &entry,
             self.instance.as_ref().unwrap(),
         ));
-        trace!("Created surface instance");
+        trace!("[init] created surface instance");
 
         if !unsafe {
             self.surface_instance
@@ -185,11 +185,11 @@ impl App {
                 )
                 .map_err(error_to_string)
         }? {
-            return Err("Queue Family does not support Present!".to_owned());
+            return Err("[init] queue family does not support Present!".to_owned());
         }
 
         trace!(
-            "Found queue family index: {}",
+            "[init] found queue family index: {}",
             self.queue_family.as_ref().unwrap()
         );
 
@@ -230,7 +230,7 @@ impl App {
                 .map_err(error_to_string)?
         });
 
-        trace!("Created device");
+        trace!("[init] created device");
 
         self.queue = Some(unsafe {
             self.device
@@ -239,7 +239,7 @@ impl App {
                 .get_device_queue(*self.queue_family.as_ref().unwrap() as u32, 0)
         });
 
-        trace!("Created queue");
+        trace!("[init] created queue");
 
         self.is_init = true;
         Ok(())
